@@ -2,6 +2,7 @@ from django.core.handlers.wsgi import WSGIRequest
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
+from django.shortcuts import render
 #Models
 from ..models import Post
 #Serializers
@@ -31,3 +32,6 @@ class PostApiView(APIView):
             return Response(
                 {'status': 'bad', 'error': "Exception In Index: " + str(e)}, 
                 status=status.HTTP_400_BAD_REQUEST)
+            
+    def homepage(request):
+        return render(request, 'index.html')
